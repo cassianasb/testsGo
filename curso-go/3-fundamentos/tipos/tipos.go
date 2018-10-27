@@ -30,4 +30,24 @@ func main() {
 	fmt.Println("O tipo x é", reflect.TypeOf(x))
 	fmt.Println("O tipo do literal 49.99 é", reflect.TypeOf(49.99)) //por padrão é float64
 
+	bo := true
+	fmt.Println("O tipo de bo é", reflect.TypeOf(bo))
+	fmt.Println(!bo)
+
+	//String
+	s1 := "Olá, meu nome é Cassiana"
+	fmt.Println(s1 + "!")
+	fmt.Println("O tamanho de s1 é", len(s1))
+
+	//String com muitas linhas
+	s2 := `Olá,
+	 meu
+	 nome
+	 é
+	 Cassiana`
+	fmt.Println(s2)
+
+	//Char não existe em Go, é um int32, apesar de permitir um caracter entre aspas simples
+	char := 'a'
+	fmt.Println("O tipo de char é", reflect.TypeOf(char))
 }
