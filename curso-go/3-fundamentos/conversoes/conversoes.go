@@ -26,6 +26,7 @@ func main() {
 
 	//string para boolean
 	b, _ := strconv.ParseBool("true")
+	//b, _ := strconv.ParseBool("1") apenas o valor 1 é verdadeiro
 	if b {
 		fmt.Println("Verdadeiro")
 	}
