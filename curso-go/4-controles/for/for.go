@@ -30,4 +30,6 @@ func main() {
 		fmt.Println("Para sempre...")
 		time.Sleep(time.Second * 5) //parar ctrl alt m
 	}
+
+	//Veremos o foreach no cap. de Array
 }
