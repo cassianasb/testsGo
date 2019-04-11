@@ -1,10 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 //Curr...
 type Curr struct {
-	currency string
+	Currency string
 	Name     string
 	Country  string
 	Number   int
@@ -123,6 +126,15 @@ func main() {
 	if isDollar2(dol) {
 		fmt.Println("Dollar currency found: ", dol)
 	}
+
+	find("Real")
+	fmt.Println(assertEuro(currencies[2]))
+	fmt.Println(assertEuro(currencies[8]))
+
+	findAny("Peso")
+	findAny(978)
+	findAny("BRL")
+	findAny(false)
 }
 
 func printCurr(number int) {
@@ -136,5 +148,49 @@ func printCurr(number int) {
 		fmt.Printf("Found: %v\n", USD)
 	} else {
 		fmt.Println("No currency found with number", number)
+	}
+}
+
+//Switch sem expressão
+func find(name string) {
+	for i := 0; i < len(currencies); i++ {
+		c := currencies[i]
+		switch {
+		case strings.Contains(c.Currency, name),
+			strings.Contains(c.Name, name),
+			strings.Contains(c.Country, name):
+			fmt.Println("Found", c)
+		}
+	}
+}
+
+//inicializando a variavel no switch
+func assertEuro(cur Curr) bool {
+	switch name, curr := "Euro", "EUR"; {
+	case cur.Name == name:
+		return true
+	case cur.Currency == curr:
+		return true
+	}
+	return false
+}
+
+func findNumber(num int) {
+	for _, curr := range currencies {
+		if curr.Number == num {
+			fmt.Println("Found", curr)
+		}
+	}
+}
+
+//comparando por tipo da variavel
+func findAny(val interface{}) {
+	switch i := val.(type) {
+	case int:
+		findNumber(i)
+	case string:
+		find(i)
+	default:
+		fmt.Printf("Unable to search with type %T\n", val)
 	}
 }
