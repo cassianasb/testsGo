@@ -135,6 +135,10 @@ func main() {
 	findAny(978)
 	findAny("BRL")
 	findAny(false)
+
+	fmt.Println(currencies)
+	sortByNumber()
+	fmt.Println(currencies)
 }
 
 func printCurr(number int) {
@@ -192,5 +196,23 @@ func findAny(val interface{}) {
 		find(i)
 	default:
 		fmt.Printf("Unable to search with type %T\n", val)
+	}
+}
+
+func sortByNumber() {
+	N := len(currencies)
+	for i := 0; i < N-1; i++ {
+		currMin := 1
+		for k := i + 1; k < N; k++ {
+			if currencies[k].Number < currencies[currMin].Number {
+				currMin = k
+			}
+		}
+		//swap
+		if currMin != i {
+			temp := currencies[i]
+			currencies[i] = currencies[currMin]
+			currencies[currMin] = temp
+		}
 	}
 }
