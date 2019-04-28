@@ -43,4 +43,15 @@ func main() {
 	fmt.Println(char1)
 	fmt.Println(char2)
 	fmt.Println(char3)
+
+	var (
+		txt  = "\u6c34\x20brings\x20\x6c\x69\x66\x65" //interprestado como string
+		txt2 = `
+		\u6c34\x20
+		brings\x20
+		\x6c\x69\x66\x65
+		`  //interpretado como string crua (forma literal)
+	)
+	fmt.Println(txt)
+	fmt.Println(txt2)
 }
